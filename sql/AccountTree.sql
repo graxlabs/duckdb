@@ -8,4 +8,4 @@ WITH RECURSIVE tree AS (
     FROM Account.csv a, tree
     WHERE a.ParentId = tree.Id
 )
-SELECT * FROM tree;
+SELECT * FROM tree LIMIT 1000;

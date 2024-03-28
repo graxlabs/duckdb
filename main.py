@@ -1,15 +1,9 @@
-import duckdb
-
-
-def main():
-    # Your DuckDB code here
-    connection = duckdb.connect(":memory:")
-    cursor = connection.cursor()
-    cursor.execute("CREATE TABLE test (id INTEGER, name VARCHAR)")
-    cursor.execute("INSERT INTO test VALUES (1, 'DuckDB')")
-    result = cursor.execute("SELECT * FROM test").fetchall()
-    print(result)
-
+import sys
+from query import queryFile
 
 if __name__ == "__main__":
-    main()
+    if len(sys.argv) < 2:
+        print("Usage: python main.py <path to query file>")
+        sys.exit(1)
+
+    print(queryFile(sys.argv[1]).df())

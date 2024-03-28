@@ -10,7 +10,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
-def queryFromFile(path):
+def queryFile(path):
     with open(path) as f:
         return query(f.read())
 
